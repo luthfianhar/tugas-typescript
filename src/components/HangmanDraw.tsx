@@ -1,3 +1,26 @@
+interface HangmanDrawProps {
+  attempt: number;
+}
+
+function HangmanDraw({ attempt }: HangmanDrawProps) {
+  return (
+    <section className='relative'>
+      {/* Memanggil bagian tubuh sesuai berapa kali pemain salah menebak */}
+      {/* Memanggil index ke 0 sampai index jumlah pemain salah nebak */}
+      {HangmanFullBody.slice(0, attempt)}
+
+      {/* TALI */}
+      <div className='bg-black w-2 h-12 absolute right-0' />
+      {/* KAYU ATAS */}
+      <div className='bg-black w-40 h-2 ml-32' />
+      {/* TIANG */}
+      <div className='bg-black w-2 h-96 ml-32' />
+      {/* PENYANGGA */}
+      <div className='bg-black w-64 h-2' />
+    </section>
+  );
+}
+
 const HangmanHead = () => {
   return (
     <div className='rounded-full border-6 border-black w-15 h-15 absolute -right-6.5 top-11' />
@@ -22,36 +45,23 @@ const HangmanLeftArm = () => {
 
 const HangmanLeftFoot = () => {
   return (
-    <div className='bg-black h-2 w-26 absolute -right-3 top-60 -rotate-45' />
+    <div className='bg-black h-2 w-26 absolute -right-3 top-63 -rotate-45' />
   );
 };
 
 const HangmanRightFoot = () => {
   return (
-    <div className='bg-black h-2 w-26 absolute -right-21 top-60 rotate-45' />
+    <div className='bg-black h-2 w-26 absolute -right-21 top-63 rotate-45' />
   );
 };
 
-function HangmanDraw() {
-  return (
-    <section className='relative'>
-      <HangmanHead />
-      <HangmanBody />
-      <HangmanRightArm />
-      <HangmanLeftArm />
-      <HangmanLeftFoot />
-      <HangmanRightFoot />
-
-      {/* TALI */}
-      <div className='bg-black w-2 h-12 absolute right-0' />
-      {/* KAYU ATAS */}
-      <div className='bg-black w-40 h-2 ml-32' />
-      {/* TIANG */}
-      <div className='bg-black w-2 h-96 ml-32' />
-      {/* PENYANGGA */}
-      <div className='bg-black w-64 h-2' />
-    </section>
-  );
-}
+const HangmanFullBody = [
+  <HangmanHead />,
+  <HangmanBody />,
+  <HangmanRightArm />,
+  <HangmanLeftArm />,
+  <HangmanLeftFoot />,
+  <HangmanRightFoot />,
+];
 
 export default HangmanDraw;
